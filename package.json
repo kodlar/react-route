@@ -6,7 +6,10 @@
     "react-scripts": "1.0.10"
   },
   "dependencies": {
+    "axios": "^0.16.2",
+    "html-to-react": "^1.2.11",
     "react": "^15.6.1",
+    "react-cookies": "^0.1.0",
     "react-dom": "^15.6.1"
   },
   "scripts": {

@@ -11,8 +11,8 @@ import NotFound from './Components/NotFound'
 import registerServiceWorker from './registerServiceWorker';
 // Import routing components
 import {Router, Route, browserHistory, IndexRoute} from '../node_modules/react-router';
-
-
+import cookie from 'react-cookies'
+import axios from 'axios';
 /**
  * izlenen videolar
  * https://www.youtube.com/watch?v=fPgE67iLkns
@@ -23,6 +23,12 @@ import {Router, Route, browserHistory, IndexRoute} from '../node_modules/react-r
  * https://www.youtube.com/watch?v=VdyORTskPGA (React Route v4)
  * https://www.youtube.com/channel/UC-4UaMoSmZxS8q_6v-va6Mw/videos
  * https://medium.com/codingthesmartway-com-blog/getting-started-with-axios-166cb0035237 (axios post)
+ * https://github.com/mzabriskie/axios
+ * http://paulsturgess.co.uk/blog/2017/02/08/making-and-testing-ajax-requests-with-axios-in-a-redux-app/
+ * OKU BU KIZI
+ * https://medium.com/@harinilabs/day-5-making-server-request-in-react-with-axios-8e85549caf62
+ * Burada Mathieu yorumunu dikkat et
+ * https://daveceddia.com/ajax-requests-in-react/
  */
 
 //
@@ -91,6 +97,16 @@ const requireAuth = (nextState, replace) => {
 }
 
 
+ const checkToken = () => {
+     
+      axios.post('https://gentle-mesa-67339.herokuapp.com/authenticate/login', {username: 'okeskiner',password: '1qaz2wsx'})
+      .then(res => {              
+              cookie.save('token', res.data.token);
+          })
+      .catch(function (error) {console.log(error);});
+  }
+
+
 ReactDOM.render(
     <Router history={browserHistory}>       
         <Route path="/" component={Layout}>
@@ -99,7 +115,7 @@ ReactDOM.render(
             <Route path="/cars" component={Car} data={data} />
                 {/* Parameter route*/}
             <Route path="/cars/:id" component={CarDetail} data={data}/>
-            <Route path="/about" component={About}/>
+            <Route path="/about" component={About} onEnter={checkToken}/>
             <Route path="/admin" component={Admin} onEnter={requireAuth} />
             <Route path="*" component={NotFound}/>
             
