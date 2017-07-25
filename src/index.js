@@ -9,9 +9,11 @@ import Admin from './Components/Admin';
 import CarDetail from './Components/CarDetail'
 import NotFound from './Components/NotFound'
 import registerServiceWorker from './registerServiceWorker';
+import cookie from 'react-cookies'
 // Import routing components
 import {Router, Route, browserHistory, IndexRoute} from '../node_modules/react-router';
 import Token from './Components/Service/Token'
+
 /**
  * izlenen videolar
  * https://www.youtube.com/watch?v=fPgE67iLkns
@@ -110,7 +112,12 @@ ReactDOM.render(
             <Route path="/cars" component={Car} data={data} />
                 {/* Parameter route*/}
             <Route path="/cars/:id" component={CarDetail} data={data}/>
-            <Route path="/about" component={About} onEnter={Token.checkToken}/>
+            <Route path="/about" component={About} onEnter={() => {
+                console.log(cookie.load('token'))
+                if(cookie.load('token') === undefined || cookie.load('token') === ''){
+                        Token.checkToken();
+                }
+            }}/>
             <Route path="/admin" component={Admin} onEnter={requireAuth} />
             <Route path="*" component={NotFound}/>
             

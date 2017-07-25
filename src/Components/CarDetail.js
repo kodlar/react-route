@@ -11,7 +11,7 @@ class CarDetail extends Component {
         const cars = this.props.route.data;
         const id = this.props.params.id;
         const car = cars.filter(car => {
-            if(car.id == id){
+            if(car.id === id){
                 return car;
             }
         });
@@ -37,7 +37,7 @@ console.log(car);
                 </div>
                 <div className="col-md-12">
                         <button className="btn btn-default" onClick={this.handleRedirect.bind(this)}>Go to Cars</button>
-                    </div>
+                </div>
             </div>
         );
     }
