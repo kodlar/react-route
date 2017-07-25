@@ -11,8 +11,7 @@ import NotFound from './Components/NotFound'
 import registerServiceWorker from './registerServiceWorker';
 // Import routing components
 import {Router, Route, browserHistory, IndexRoute} from '../node_modules/react-router';
-import cookie from 'react-cookies'
-import axios from 'axios';
+import Token from './Components/Service/Token'
 /**
  * izlenen videolar
  * https://www.youtube.com/watch?v=fPgE67iLkns
@@ -29,6 +28,9 @@ import axios from 'axios';
  * https://medium.com/@harinilabs/day-5-making-server-request-in-react-with-axios-8e85549caf62
  * Burada Mathieu yorumunu dikkat et
  * https://daveceddia.com/ajax-requests-in-react/
+ * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
+ * bunu kullan
+ * https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_blog&stacked=h
  */
 
 //
@@ -97,14 +99,7 @@ const requireAuth = (nextState, replace) => {
 }
 
 
- const checkToken = () => {
-     
-      axios.post('https://gentle-mesa-67339.herokuapp.com/authenticate/login', {username: 'okeskiner',password: '1qaz2wsx'})
-      .then(res => {              
-              cookie.save('token', res.data.token);
-          })
-      .catch(function (error) {console.log(error);});
-  }
+
 
 
 ReactDOM.render(
@@ -115,7 +110,7 @@ ReactDOM.render(
             <Route path="/cars" component={Car} data={data} />
                 {/* Parameter route*/}
             <Route path="/cars/:id" component={CarDetail} data={data}/>
-            <Route path="/about" component={About} onEnter={checkToken}/>
+            <Route path="/about" component={About} onEnter={Token.checkToken}/>
             <Route path="/admin" component={Admin} onEnter={requireAuth} />
             <Route path="*" component={NotFound}/>
             
