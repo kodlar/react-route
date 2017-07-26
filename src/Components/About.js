@@ -19,15 +19,11 @@ class About extends Component {
 
 componentWillMount() {
       //https://gentle-mesa-67339.herokuapp.com/post/ruh-ve-madde/astral-seyahat-nicin-yapilir    
-      // try{
-      // console.log("componentWillMount");
-     console.log(cookie.load('token'))
+     
      var mytoken  = cookie.load('token');
-     if(mytoken === undefined){
-       //Token.checkToken
-       Token.checkToken();
-       //this.Token.checkToken.bind(this);
-       browserHistory.push(window.location.href);  
+     if(mytoken === undefined){     
+          Token.checkToken();
+          browserHistory.push(window.location.href);  
      }
      else
       {
@@ -49,14 +45,7 @@ componentWillMount() {
         });
         
       }
-      
-      // }
-      // catch(err)
-      // {
-      //     console.log("Hata aslında catch içinde yakalandı",err.messsage);
-      // }
-      
-
+     
 }
 
 render(){
