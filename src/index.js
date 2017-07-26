@@ -33,6 +33,8 @@ import Token from './Components/Service/Token'
  * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
  * bunu kullan
  * https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_blog&stacked=h
+ * https://stackoverflow.com/questions/42907713/export-and-import-the-ecma6-class
+ * https://stackoverflow.com/questions/43262599/call-js-function-from-another-file-in-react
  */
 
 //
