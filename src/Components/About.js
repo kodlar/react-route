@@ -10,7 +10,8 @@ var HtmlToReactParser = require('html-to-react').Parser;
 class About extends Component {
 
  constructor(props) {
-     super(props);   
+     super(props);  
+     console.dir(this.props) 
     this.state = {
       post : [],
       pageUrl : 'astral-seyahat-nicin-yapilir'
@@ -50,7 +51,7 @@ componentWillMount() {
 
 render(){
 
-          const pageUrl = this.state.pageUrl; 
+          const pageUrl = this.state.pageUrl;
      
           const post = this.state.post.filter(post => {
               if(post.PageURL == pageUrl){

@@ -9,14 +9,40 @@ class CarDetail extends Component {
 
     render(){
         const cars = this.props.route.data;
+        //console.log("Data: ",cars);
         const id = this.props.params.id;
-        const car = cars.filter(car => {
-            if(car.id === id){
-                return car;
+        //console.log("Id: ",id);
+        /*
+        let i = 0;
+        let mycar = {};
+        for (i = 0; i < cars.length; i++) {
+            var car = cars[i];
+            //console.log(car.id);
+            if(car.id == id){
+                mycar = car;
+                console.log(mycar);
             }
-        });
+        } 
+        */
+        /*
+        var ages = [32, 33, 16, 40];
 
-console.log(car);
+        function checkAdult(age) {
+            return age >= 18;
+        }
+
+        function myFunction() {
+            document.getElementById("demo").innerHTML = ages.filter(checkAdult);
+        } 
+        */
+
+         const car = cars.filter(car => {
+             if(car.id == id){
+                 return car;
+             }
+         });
+      
+
         return (
             <div>
                 <h1>{car[0].name}</h1>

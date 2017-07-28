@@ -8,6 +8,7 @@ import About from './Components/About';
 import Admin from './Components/Admin';
 import CarDetail from './Components/CarDetail'
 import NotFound from './Components/NotFound'
+import Alist from './Components/alist'
 import registerServiceWorker from './registerServiceWorker';
 import cookie from 'react-cookies'
 // Import routing components
@@ -114,6 +115,12 @@ ReactDOM.render(
             <Route path="/cars" component={Car} data={data} />
                 {/* Parameter route*/}
             <Route path="/cars/:id" component={CarDetail} data={data}/>
+            <Route path="/alist" component={Alist} onEnter={() => {
+                console.log(cookie.load('token'))
+                if(cookie.load('token') === undefined || cookie.load('token') === ''){
+                        Token.checkToken();
+                }
+            }}/>
             <Route path="/about" component={About} onEnter={() => {
                 console.log(cookie.load('token'))
                 if(cookie.load('token') === undefined || cookie.load('token') === ''){
@@ -121,8 +128,7 @@ ReactDOM.render(
                 }
             }}/>
             <Route path="/admin" component={Admin} onEnter={requireAuth} />
-            <Route path="*" component={NotFound}/>
-            
+            <Route path="*" component={NotFound}/>            
         </Route>
     </Router>
     , document.getElementById('root'));
