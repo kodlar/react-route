@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies'
 import Token from './Service/Token'
-import { withRouter } from 'react-router'
+//import { withRouter } from 'react-router'
 import {browserHistory} from '../../node_modules/react-router';
 var HtmlToReactParser = require('html-to-react').Parser;
 
@@ -11,7 +11,7 @@ class About extends Component {
 
  constructor(props) {
      super(props);  
-     console.dir(this.props) 
+     //console.dir(this.props) 
     this.state = {
       post : [],
       pageUrl : 'astral-seyahat-nicin-yapilir'
@@ -36,7 +36,7 @@ componentWillMount() {
       
       instance.get(`/post/ruh-ve-madde/${this.state.pageUrl}`)
             .then(res => {  
-              console.log('çekilen data: ',res.data.data)       
+             //console.log('çekilen data: ',res.data.data)       
               this.setState({ post : res.data.data });
             }).catch(function (error) {   
               console.log("Hata burada: ",error);      
@@ -54,9 +54,10 @@ render(){
           const pageUrl = this.state.pageUrl;
      
           const post = this.state.post.filter(post => {
-              if(post.PageURL == pageUrl){
+              if(post.PageURL === pageUrl){
                   return post;
               }
+             return null;
           });
 
           if(post.length > 0 )

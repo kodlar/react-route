@@ -122,7 +122,7 @@ ReactDOM.render(
                 }
             }}/>
             <Route path="/about" component={About} onEnter={() => {
-                console.log(cookie.load('token'))
+                //console.log(cookie.load('token'))
                 if(cookie.load('token') === undefined || cookie.load('token') === ''){
                         Token.checkToken();
                 }

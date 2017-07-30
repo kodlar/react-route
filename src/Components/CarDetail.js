@@ -37,9 +37,10 @@ class CarDetail extends Component {
         */
 
          const car = cars.filter(car => {
-             if(car.id == id){
+             if(car.id === id){
                  return car;
              }
+            return null;
          });
       
 
