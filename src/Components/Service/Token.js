@@ -4,7 +4,7 @@ import axios from 'axios';
 export default class Token {
 
   static checkToken = () => {
-    axios.post('https://gentle-mesa-67339.herokuapp.com/authenticate/login', {username: 'okeskiner',password: '1qaz2wsx'})
+    axios.post('https://xx-xx-xx.xxx.com/authenticate/login', {username: 'xxx',password: 'zzz'})
         .then(res => {                 
                 cookie.save('token', res.data.token);
             })
